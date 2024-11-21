@@ -1,0 +1,5 @@
+.DS_Store
+__pycache__/
+lightning_logs/
+stock-cls/
+wandb/

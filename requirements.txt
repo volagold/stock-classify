@@ -1,0 +1,9 @@
+fire
+tqdm
+numpy
+pandas
+matplotlib
+scikit-learn
+yfinance
+torch
+lightning

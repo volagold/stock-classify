@@ -14,28 +14,28 @@ pip install -r requirements.txt
 ```
 
 ### I.data
-1️.download historical day-level price data for all US stocks. The list of tickets (`data/tickets.txt`) comes from nasdaq, and may not be 100% complete or up-to-date.
+① download historical day-level price data for all US stocks. The list of tickets (`data/tickets.txt`) comes from nasdaq, and may not be 100% complete or up-to-date.
 ```shell
 cd data
 python download.py
 ```
 Each ticket history will be downloaded as a separate csv file in `data/csv` folder. You can use `--num=1000` flag to download data for only certain number of tickets at a time.
 
-2.plot all the data.
+② plot all the data.
 ```shell
 python plot.py
 ```
 The plots will be saved in the `data/plots` folder.
 
 ### II.machine learning
-1.extract features from data 
+① extract features from data 
 ```shell
 cd ml
 python extract_features.py
 ```
 the output will be two csv tables in the `ml` folder, one for labeled tickets and one for unlabeled tickets.
 
-2.fit model
+② fit model
 ```shell
 python fit.py --model=lr
 ```
@@ -46,27 +46,27 @@ Available models:
 
 You should be able to get around 95% test accuracy. Model file will be saved as `model.pkl` in the same folder.
 
-3.classify 5000+ unlabeled tickets
+③ classify 5000+ unlabeled tickets
 ```shell
 python pred.py
 ```
 Prediction will be saved to a `prediction.json` file.
 
 ### III.deep learning
-1.prepare data for training with
+① prepare data for training with
 ```shell
 cd cnn
 python prepare.py
 ```
 The output is two csv files "training_data.csv" and "unlabeled_data.csv" in the `cnn` folder.
 
-2.train the model with
+② train the model with
 ```shell
 python train.py
 ```
 [wandb](https://wandb.ai/) is used for logging with project name "stock-cls", so before training please create an account and login. Otherwise, you can comment out the logger variable in `train.py`. After training, model weights will be saved to `cnn/stock-cls/[some-name]/checkpoints/` folder.
 
-3.classify unlabeled tickets with
+③ classify unlabeled tickets with
 ```shell
 python pred.py
 ```

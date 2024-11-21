@@ -21,21 +21,21 @@ python download.py
 ```
 Each ticket history will be downloaded as a separate csv file in `data/csv` folder. You can use `--num=1000` flag to download data for only certain number of tickets at a time.
 
-2️.plot all the data.
+2.plot all the data.
 ```shell
 python plot.py
 ```
 The plots will be saved in the `data/plots` folder.
 
 ### II.machine learning
-1️.extract features from data 
+1.extract features from data 
 ```shell
 cd ml
 python extract_features.py
 ```
 the output will be two csv tables in the `ml` folder, one for labeled tickets and one for unlabeled tickets.
 
-2️.fit model
+2.fit model
 ```shell
 python fit.py --model=lr
 ```
@@ -46,27 +46,27 @@ Available models:
 
 You should be able to get around 95% test accuracy. Model file will be saved as `model.pkl` in the same folder.
 
-3️.classify 5000+ unlabeled tickets
+3.classify 5000+ unlabeled tickets
 ```shell
 python pred.py
 ```
 Prediction will be saved to a `prediction.json` file.
 
 ### III.deep learning
-1️.prepare data for training with
+1.prepare data for training with
 ```shell
 cd cnn
 python prepare.py
 ```
 The output is two csv files "training_data.csv" and "unlabeled_data.csv" in the `cnn` folder.
 
-2️.train the model with
+2.train the model with
 ```shell
 python train.py
 ```
 [wandb](https://wandb.ai/) is used for logging with project name "stock-cls", so before training please create an account and login. Otherwise, you can comment out the logger variable in `train.py`. After training, model weights will be saved to `cnn/stock-cls/[some-name]/checkpoints/` folder.
 
-3️.classify unlabeled tickets with
+3.classify unlabeled tickets with
 ```shell
 python pred.py
 ```

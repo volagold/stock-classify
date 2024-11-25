@@ -27,6 +27,8 @@ python plot.py
 ```
 The plots will be saved in the `data/plots` folder.
 
+---
+
 ### II.machine learning
 ① extract features from data 
 ```shell
@@ -51,6 +53,8 @@ You should be able to get around 95% test accuracy. Model file will be saved as 
 python pred.py
 ```
 Prediction will be saved to a `prediction.json` file.
+ 
+---
 
 ### III.deep learning
 ① prepare data for training with
@@ -73,8 +77,18 @@ python pred.py
 The output will be a `prediction.json` file in the `cnn` folder.
 
 ## Remarks
-1. In real situations, defining the problem is often hard. If you have _precise_ definition of your problem, then you already solved it.
-2. No feature can perfectly separate all categories. Otherwise, this single feature can be used as a classifier.
-3. Machine learning approach is very explainable. It can even let you discover errors in data labeling by examing individual features.
-4. Deep learning models have powerful representations, you can instantly acheive high accuracy without going through feature engineering. 
-5. However, setting up and training neural networks is a heavy process. Training can be unstable, and performance is also sensitive to hyperparameters. Yet hyperparameter tuning wouldn't give you much insights to your original problem. 
+**point 0. defining the problem is often hard.** 
+
+If you have a _precise_ definition of your problem, then you already solved it. There are so many known and unknown variations that we deem should be of the same category, that's why we label data. If you are a client-facing consultant, you'll find that clients often don't know what they want, until you show them your work. In such situation, it is important to encourage clients to clarify their needs early on.
+
+**point 1. no feature can perfectly distinguish classes.** 
+
+Otherwise, this single feature can be used as a classifier. For consistency, it is recommended for all features to have the same scaling, for example in range $[0,1]$. The goal is to find features $f:X\to[0,1]$ such that class-0 data map to values close to $0$, class-1 data map to values close to $1$, with as little overlap as possible. The more such features we find, the easier for machine learning models to separate, because the distance between $\mathbf{0}=(0,\ldots,0)$ and $\mathbf{1}=(1,\ldots,1)$ in $\mathbb{R}^n$ is $\sqrt{n}$ and it goes to infinity as $n\to\infty$. Features should also be independent from each other, because dependence reduces effectiveness.
+
+**point 2. machine learning approach is very explainable.** 
+
+During feature selection, it is even possible to discover labeling errors in data by examining individual features, which is something that is not very possible with deep learning approach. When the ML model works well, you know exactly why it works. You solved the problem with human intelligence. The whole process is transparent.
+
+**point 3. deep learning is powerful but hard to control.**
+
+Deep learning models have powerful representations, you can instantly achieve high accuracy without going through feature engineering. However, setting up and training neural networks is a heavy process, which means it is less flexible when you want to update or change something later. Training can be very unstable and volatile, and model performance is sensitive to hyperparameters. Yet hyperparameter tuning wouldn't give you much insights to your original problem. 
